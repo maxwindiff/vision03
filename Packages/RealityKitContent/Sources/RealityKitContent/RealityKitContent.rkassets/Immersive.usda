@@ -54,36 +54,38 @@ def Xform "Root"
         {
             string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
-            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 1388
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 1399
 
             over "MaterialXPreviewSurface"
             {
                 float2 ui:nodegraph:node:size = (207.5, 307)
-                int ui:nodegraph:node:stackingOrder = 1387
+                int ui:nodegraph:node:stackingOrder = 1400
                 string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:diffuseColor"]
             }
 
             over "Remap"
             {
                 float2 ui:nodegraph:node:size = (94, 181)
-                int ui:nodegraph:node:stackingOrder = 1379
+                int ui:nodegraph:node:stackingOrder = 1397
             }
 
             over "Fractional"
             {
                 float2 ui:nodegraph:node:size = (154.5, 109)
-                int ui:nodegraph:node:stackingOrder = 1373
+                int ui:nodegraph:node:stackingOrder = 1402
             }
 
             over "Multiply"
             {
                 float2 ui:nodegraph:node:size = (60, 36)
+                int ui:nodegraph:node:stackingOrder = 1403
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2", "inputs:in2"]
             }
 
             over "Combine3"
             {
                 float2 ui:nodegraph:node:size = (145, 54)
-                int ui:nodegraph:node:stackingOrder = 1384
+                int ui:nodegraph:node:stackingOrder = 1391
             }
 
             over "Subtract"
@@ -95,29 +97,31 @@ def Xform "Root"
             over "Absval"
             {
                 float2 ui:nodegraph:node:size = (121.5, 53)
+                int ui:nodegraph:node:stackingOrder = 1401
             }
 
             over "BaseColor"
             {
                 float2 ui:nodegraph:node:size = (151, 53)
-                int ui:nodegraph:node:stackingOrder = 1386
+                int ui:nodegraph:node:stackingOrder = 1393
             }
 
             over "LineColor"
             {
                 float2 ui:nodegraph:node:size = (151, 53)
-                int ui:nodegraph:node:stackingOrder = 1385
+                int ui:nodegraph:node:stackingOrder = 1394
             }
 
             over "Texcoord"
             {
                 float2 ui:nodegraph:node:size = (180.5, 53)
+                int ui:nodegraph:node:stackingOrder = 1406
             }
 
             over "LineCounts"
             {
                 float2 ui:nodegraph:node:size = (151.5, 53)
-                int ui:nodegraph:node:stackingOrder = 1372
+                int ui:nodegraph:node:stackingOrder = 1407
             }
 
             over "LineWidths"
@@ -129,19 +133,20 @@ def Xform "Root"
             over "Separate2"
             {
                 float2 ui:nodegraph:node:size = (115, 127)
-                int ui:nodegraph:node:stackingOrder = 1371
+                int ui:nodegraph:node:stackingOrder = 1389
             }
 
             over "Min"
             {
                 float2 ui:nodegraph:node:size = (113, 40)
-                int ui:nodegraph:node:stackingOrder = 1383
+                int ui:nodegraph:node:stackingOrder = 1390
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
             }
 
             over "Range"
             {
                 float2 ui:nodegraph:node:size = (98, 217)
-                int ui:nodegraph:node:stackingOrder = 1381
+                int ui:nodegraph:node:stackingOrder = 1388
                 string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:outhigh"]
             }
         }
@@ -160,11 +165,39 @@ def Xform "Root"
             color3f inputs:diffuseColor = (0.46135616, 0.017613119, 0) (
                 colorSpace = "srgb_displayp3"
             )
+            color3f inputs:diffuseColor.connect = </Root/MyMaterial/Ramp4.outputs:out>
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:opacity
+            float inputs:roughness
             token outputs:out
             float2 ui:nodegraph:node:pos = (74.25, 99.5)
             float2 ui:nodegraph:node:size = (148.5, 199)
-            int ui:nodegraph:node:stackingOrder = 1
+            int ui:nodegraph:node:stackingOrder = 18
             string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:diffuseColor"]
+        }
+
+        def Shader "Ramp4"
+        {
+            uniform token info:id = "ND_ramp4_color3"
+            float2 inputs:texcoord
+            color3f inputs:valuebl = (0, 0.032412548, 1) (
+                colorSpace = "srgb_displayp3"
+            )
+            color3f inputs:valuebr = (1, 1, 1) (
+                colorSpace = "srgb_displayp3"
+            )
+            color3f inputs:valuetl = (1, 0.019096047, 0) (
+                colorSpace = "srgb_displayp3"
+            )
+            color3f inputs:valuetr = (0.044460677, 1, 0) (
+                colorSpace = "srgb_displayp3"
+            )
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-311.31738, 55.454243)
+            float2 ui:nodegraph:node:size = (148.5, 181)
+            int ui:nodegraph:node:stackingOrder = 23
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:valuetr", "inputs:valuetl"]
         }
     }
 }

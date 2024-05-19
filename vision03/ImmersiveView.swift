@@ -10,6 +10,25 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
+public extension MeshResource {
+  func invert() async throws {
+    var replaced = contents
+    replaced.models = .init(replaced.models.map { body in
+      return MeshResource.Model(id: body.id,
+                                parts: body.parts.map { part in
+        if let normals = part.normals, let indices = part.triangleIndices {
+          var inverted = part
+          inverted.normals = .init(normals.map { $0 * -1.0 })
+          inverted.triangleIndices = .init(indices.reversed())
+          return inverted
+        }
+        return part
+      })
+    })
+    try await replace(with: replaced)
+  }
+}
+
 struct ImmersiveView: View {
   let session = ARKitSession()
   let worldTracking = WorldTrackingProvider()
@@ -23,6 +42,8 @@ struct ImmersiveView: View {
       content.add(headAnchor)
       
       let mesh = MeshResource.generateSphere(radius: 1)
+      try! await mesh.invert()
+      
       let mat = try! await ShaderGraphMaterial(named: "/Root/MyMaterial", from: "Immersive.usda", in: realityKitContentBundle)
       sphereEntity = ModelEntity(mesh: mesh, materials: [mat])
       sphereEntity!.look(at: [0, 0, 0], from: [0, 1.5, -3],

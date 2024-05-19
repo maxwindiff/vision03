@@ -1,5 +1,5 @@
 {
-  "advancedEditorSelectedIdentifier" : "ProjectBrowser",
+  "advancedEditorSelectedIdentifier" : "ShaderGraphEditorPluginID",
   "openSceneRelativePaths" : [
     "Immersive.usda"
   ],
@@ -10,6 +10,28 @@
   },
   "sceneCameraHistory" : {
     "1D572CEB-057A-41C3-B575-04C37501A3C0" : [
+      {
+        "date" : 737798724.585343,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          -0,
+          0,
+          -0,
+          0.86602575,
+          -0.4999994,
+          0,
+          0,
+          0.4999994,
+          0.86602575,
+          0,
+          4.7683716e-07,
+          2.1466799,
+          1.8320458,
+          1
+        ]
+      },
       {
         "date" : 737795992.698515,
         "title" : "Untitled",
@@ -33,5 +55,6 @@
         ]
       }
     ]
-  }
+  },
+  "selectedSceneRelativePath" : "Immersive.usda"
 }

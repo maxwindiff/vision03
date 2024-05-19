@@ -22,8 +22,8 @@ struct ImmersiveView: View {
     RealityView { content, attachments in
       content.add(headAnchor)
       
-      let mesh = MeshResource.generateSphere(radius: 2)
-      let mat = SimpleMaterial(color: .magenta.withAlphaComponent(0.9), isMetallic: true)
+      let mesh = MeshResource.generateSphere(radius: 1)
+      let mat = try! await ShaderGraphMaterial(named: "/Root/MyMaterial", from: "Immersive.usda", in: realityKitContentBundle)
       sphereEntity = ModelEntity(mesh: mesh, materials: [mat])
       sphereEntity!.look(at: [0, 0, 0], from: [0, 1.5, -3],
                          relativeTo: nil, forward: .positiveZ)

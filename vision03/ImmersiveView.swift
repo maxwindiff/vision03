@@ -41,14 +41,19 @@ struct ImmersiveView: View {
     RealityView { content, attachments in
       content.add(headAnchor)
       
-      let mesh = MeshResource.generateSphere(radius: 1)
-      try! await mesh.invert()
-      
-      let mat = try! await ShaderGraphMaterial(named: "/Root/MyMaterial", from: "Immersive.usda", in: realityKitContentBundle)
-      sphereEntity = ModelEntity(mesh: mesh, materials: [mat])
-      sphereEntity!.look(at: [0, 0, 0], from: [0, 1.5, -3],
-                         relativeTo: nil, forward: .positiveZ)
-      content.add(sphereEntity!)
+      do {
+        let mesh = MeshResource.generateSphere(radius: 1)
+        try await mesh.invert()
+        let mat = try await ShaderGraphMaterial(named: "/Root/MyMaterial", from: "Immersive.usda", in: realityKitContentBundle)
+        let entity = ModelEntity(mesh: mesh, materials: [mat])
+        entity.look(at: [0, 0, 0], from: [0, 1.5, -3],
+                           relativeTo: nil, forward: .positiveZ)
+        content.add(entity)
+        sphereEntity = entity
+      } catch {
+        print("Failed to create sphere: \(error)")
+        return;
+      }
 
       if let panel = attachments.entity(for: "sphere-controller") {
         panel.look(at: [0, 0, 0.5], from: [0, -0.25, -0.8],

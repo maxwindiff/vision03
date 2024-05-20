@@ -255,12 +255,12 @@ def Xform "Root"
 
         def NodeGraph "PulsatingGrid"
         {
-            float inputs:Speed = 2 (
+            float inputs:Speed = 4 (
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-62.628906, 176.71484)
+                        float2 positionInSubgraph = (-55.023438, 167.61719)
                         float2 sizeInSubgraph = (107.5, 53)
-                        int stackingOrderInSubgraph = 395
+                        int stackingOrderInSubgraph = 405
                     }
                 }
             )

@@ -2,10 +2,9 @@ import SwiftUI
 
 struct PositionControl: View {
   var title: String
-  @State var position: SIMD3<Float> = [0, 0, 0]
-  @State var lookAt: SIMD3<Float> = [0, 0, 0]
-  var onChange: (_ position: SIMD3<Float>, _ lookAt: SIMD3<Float>) -> Void
-  
+  @Binding var position: SIMD3<Float>
+  @Binding var lookAt: SIMD3<Float>
+
   var body: some View {
     VStack {
       Text(title).font(.title)
@@ -44,13 +43,11 @@ struct PositionControl: View {
     .frame(width: 500)
     .background(.thickMaterial)
     .clipShape(RoundedRectangle(cornerRadius: 10))
-    .onChange(of: [position, lookAt]) {
-      print(position, lookAt)
-      onChange(position, lookAt)
-    }
   }
 }
 
 #Preview {
-  PositionControl(title: "Controller", onChange: { position, lookAt in })
+  PositionControl(title: "Controller",
+                  position: .constant([0, 0, 0]),
+                  lookAt: .constant([0, 0, 0]))
 }

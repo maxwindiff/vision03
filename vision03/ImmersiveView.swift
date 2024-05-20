@@ -48,11 +48,11 @@ struct ImmersiveView: View {
         return;
       }
 
-      if let panel = attachments.entity(for: "sphere-controller") {
-        panel.look(at: [0, 0, 0.5], from: [0, -0.25, -0.8],
-                   relativeTo: nil, forward: .positiveZ)
-        headAnchor.addChild(panel)
-      }
+//      if let panel = attachments.entity(for: "sphere-controller") {
+//        panel.look(at: [0, 0, 0.5], from: [0, -0.25, -0.8],
+//                   relativeTo: nil, forward: .positiveZ)
+//        headAnchor.addChild(panel)
+//      }
     } attachments: {
       Attachment(id: "sphere-controller") {
         PositionControl(title: "Sphere",

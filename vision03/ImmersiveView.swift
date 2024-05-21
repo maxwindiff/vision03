@@ -27,8 +27,8 @@ struct ImmersiveView: View {
   let worldTracking = WorldTrackingProvider()
   let headAnchor = AnchorEntity(.head)
 
-  @State var spherePosition: SIMD3<Float> = [0, 1.5, 0]
-  @State var sphereLookAt: SIMD3<Float> = [0, 0, 0]
+  @State var spherePosition: SIMD3<Float> = [0, 1.5, -1]
+  @State var sphereLookAt: SIMD3<Float> = [0, 0, -1]
   @State var sphereEntity: Entity?
 
   var body: some View {
@@ -36,7 +36,7 @@ struct ImmersiveView: View {
       content.add(headAnchor)
       
       do {
-        let mesh = MeshResource.generateSphere(radius: 1)
+        let mesh = MeshResource.generateSphere(radius: 2)
         try await mesh.invert()
         let mat = try await ShaderGraphMaterial(named: "/Root/MyMaterial", from: "Immersive.usda", in: realityKitContentBundle)
         let entity = ModelEntity(mesh: mesh, materials: [mat])

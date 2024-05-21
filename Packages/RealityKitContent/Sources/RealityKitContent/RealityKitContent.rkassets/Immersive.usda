@@ -10,154 +10,12 @@ reorder rootPrims = ["Root", "GridMaterial"]
 def Xform "Root"
 {
     reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial", "MyMaterial"]
-    def Sphere "Sphere_Right" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-    )
-    {
-        rel material:binding = </Root/GridMaterial/GridMaterial> (
-            bindMaterialAs = "weakerThanDescendants"
-        )
-        double radius = 0.1
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.5, 1.5, -1.5)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def Sphere "Sphere_Left" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-    )
-    {
-        rel material:binding = </Root/GridMaterial/GridMaterial> (
-            bindMaterialAs = "weakerThanDescendants"
-        )
-        double radius = 0.1
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.5, 1.5, -1.5)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "GridMaterial" (
-        active = true
-        references = @Materials/GridMaterial.usda@
-    )
-    {
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 0, 0)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        over "GridMaterial"
-        {
-            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
-            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
-            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 1399
-
-            over "MaterialXPreviewSurface"
-            {
-                float2 ui:nodegraph:node:size = (207.5, 307)
-                int ui:nodegraph:node:stackingOrder = 1400
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:diffuseColor"]
-            }
-
-            over "Remap"
-            {
-                float2 ui:nodegraph:node:size = (94, 181)
-                int ui:nodegraph:node:stackingOrder = 1397
-            }
-
-            over "Fractional"
-            {
-                float2 ui:nodegraph:node:size = (154.5, 109)
-                int ui:nodegraph:node:stackingOrder = 1402
-            }
-
-            over "Multiply"
-            {
-                float2 ui:nodegraph:node:size = (60, 36)
-                int ui:nodegraph:node:stackingOrder = 1403
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2", "inputs:in2"]
-            }
-
-            over "Combine3"
-            {
-                float2 ui:nodegraph:node:size = (145, 54)
-                int ui:nodegraph:node:stackingOrder = 1391
-            }
-
-            over "Subtract"
-            {
-                float2 ui:nodegraph:node:size = (61.5, 36)
-                int ui:nodegraph:node:stackingOrder = 1367
-            }
-
-            over "Absval"
-            {
-                float2 ui:nodegraph:node:size = (121.5, 53)
-                int ui:nodegraph:node:stackingOrder = 1401
-            }
-
-            over "BaseColor"
-            {
-                float2 ui:nodegraph:node:size = (151, 53)
-                int ui:nodegraph:node:stackingOrder = 1393
-            }
-
-            over "LineColor"
-            {
-                float2 ui:nodegraph:node:size = (151, 53)
-                int ui:nodegraph:node:stackingOrder = 1394
-            }
-
-            over "Texcoord"
-            {
-                float2 ui:nodegraph:node:size = (180.5, 53)
-                int ui:nodegraph:node:stackingOrder = 1406
-            }
-
-            over "LineCounts"
-            {
-                float2 ui:nodegraph:node:size = (151.5, 53)
-                int ui:nodegraph:node:stackingOrder = 1407
-            }
-
-            over "LineWidths"
-            {
-                float2 ui:nodegraph:node:size = (150, 53)
-                int ui:nodegraph:node:stackingOrder = 1374
-            }
-
-            over "Separate2"
-            {
-                float2 ui:nodegraph:node:size = (115, 127)
-                int ui:nodegraph:node:stackingOrder = 1389
-            }
-
-            over "Min"
-            {
-                float2 ui:nodegraph:node:size = (113, 40)
-                int ui:nodegraph:node:stackingOrder = 1390
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
-            }
-
-            over "Range"
-            {
-                float2 ui:nodegraph:node:size = (98, 217)
-                int ui:nodegraph:node:stackingOrder = 1388
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:outhigh"]
-            }
-        }
-    }
-
     def Material "MyMaterial"
     {
         reorder nameChildren = ["PreviewSurface", "Add", "X", "Y", "Multiply", "Texcoord_1", "Separate2_1", "PulsatingGrid"]
         prepend token outputs:mtlx:surface.connect = </Root/MyMaterial/PreviewSurface.outputs:out>
         token outputs:realitykit:vertex
-        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (681.0729, 129.1488)
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1291.75, 111.25)
         float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
         int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 188
 
@@ -168,118 +26,75 @@ def Xform "Root"
                 colorSpace = "srgb_displayp3"
             )
             color3f inputs:diffuseColor.connect = </Root/MyMaterial/Multiply.outputs:out>
-            float inputs:metallic
+            float inputs:metallic = 1
             float3 inputs:normal
-            float inputs:opacity
+            float inputs:opacity = 1
             float inputs:roughness
             token outputs:out
-            float2 ui:nodegraph:node:pos = (467.81482, 94.87641)
+            float2 ui:nodegraph:node:pos = (1066.75, 111.25)
             float2 ui:nodegraph:node:size = (148.5, 199)
-            int ui:nodegraph:node:stackingOrder = 186
-            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:diffuseColor"]
-        }
-
-        def Shader "Add"
-        {
-            uniform token info:id = "ND_add_color3"
-            color3f inputs:in1.connect = </Root/MyMaterial/X.outputs:out>
-            color3f inputs:in2.connect = </Root/MyMaterial/Y.outputs:out>
-            color3f outputs:out
-            float2 ui:nodegraph:node:pos = (152.7759, 13.094848)
-            float2 ui:nodegraph:node:size = (61.5, 36.5)
-            int ui:nodegraph:node:stackingOrder = 153
-        }
-
-        def Shader "X"
-        {
-            uniform token info:id = "ND_mix_color3"
-            color3f inputs:bg
-            color3f inputs:fg = (0.99942404, 0.9855537, 0) (
-                colorSpace = "srgb_texture"
-            )
-            float inputs:mix.connect = </Root/MyMaterial/Separate2_1.outputs:outx>
-            color3f outputs:out
-            float2 ui:nodegraph:node:pos = (-10.687226, -10.689809)
-            float2 ui:nodegraph:node:size = (109, 145)
-            int ui:nodegraph:node:stackingOrder = 155
-            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:fg"]
-        }
-
-        def Shader "Y"
-        {
-            uniform token info:id = "ND_mix_color3"
-            color3f inputs:bg
-            color3f inputs:fg = (0, 0.9914394, 1) (
-                colorSpace = "srgb_texture"
-            )
-            float inputs:mix.connect = </Root/MyMaterial/Separate2_1.outputs:outy>
-            color3f outputs:out
-            float2 ui:nodegraph:node:pos = (16.99585, 36.730125)
-            float2 ui:nodegraph:node:size = (109, 145)
-            int ui:nodegraph:node:stackingOrder = 157
-            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:fg"]
+            int ui:nodegraph:node:stackingOrder = 643
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:opacityThreshold"]
         }
 
         def Shader "Multiply"
         {
             uniform token info:id = "ND_multiply_color3FA"
-            prepend color3f inputs:in1.connect = </Root/MyMaterial/Add.outputs:out>
+            color3f inputs:in1.connect = </Root/MyMaterial/Convert.outputs:out>
             float inputs:in2.connect = </Root/MyMaterial/PulsatingGrid.outputs:Subtract_1_out>
             color3f outputs:out
-            float2 ui:nodegraph:node:pos = (313.019, 86.51422)
+            float2 ui:nodegraph:node:pos = (894.6792, 167.1738)
             float2 ui:nodegraph:node:size = (60, 36)
-            int ui:nodegraph:node:stackingOrder = 190
-        }
-
-        def Shader "Texcoord_1"
-        {
-            uniform token info:id = "ND_texcoord_vector2"
-            float2 outputs:out
-            float2 ui:nodegraph:node:pos = (-475.33826, 66.782196)
-            float2 ui:nodegraph:node:size = (180.5, 53)
-            int ui:nodegraph:node:stackingOrder = 223
-            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
-        }
-
-        def Shader "Separate2_1"
-        {
-            uniform token info:id = "ND_separate2_vector2"
-            float2 inputs:in.connect = </Root/MyMaterial/Texcoord_1.outputs:out>
-            float outputs:outx
-            float outputs:outy
-            float2 ui:nodegraph:node:pos = (-265.974, 28.559017)
-            float2 ui:nodegraph:node:size = (127.5, 127)
-            int ui:nodegraph:node:stackingOrder = 223
-            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:outx"]
+            int ui:nodegraph:node:stackingOrder = 655
         }
 
         def NodeGraph "PulsatingGrid"
         {
+            reorder nameChildren = ["Sin", "Remap", "Multiply_1", "Time", "Subtract", "Grid", "Subtract_1", "Multiply"]
+            float inputs:Max = 1 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (231.5, 173)
+                        float2 sizeInSubgraph = (98, 53)
+                        int stackingOrderInSubgraph = 621
+                    }
+                }
+            )
+            float inputs:Max.connect = None
+            float inputs:Min = 0.5 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (231.5, 342)
+                        float2 sizeInSubgraph = (98, 53)
+                        int stackingOrderInSubgraph = 617
+                    }
+                }
+            )
             float inputs:Speed = 4 (
                 customData = {
                     dictionary realitykit = {
-                        float2 positionInSubgraph = (-55.023438, 167.61719)
+                        float2 positionInSubgraph = (61.25, 139.5)
                         float2 sizeInSubgraph = (107.5, 53)
                         int stackingOrderInSubgraph = 405
                     }
                 }
             )
-            prepend float outputs:Subtract_1_out.connect = </Root/MyMaterial/PulsatingGrid/Subtract_1.outputs:out>
-            float2 ui:nodegraph:node:pos = (55.22077, 263.10504)
-            float2 ui:nodegraph:node:size = (136, 109)
-            int ui:nodegraph:node:stackingOrder = 226
-            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (846, 123.5)
+            float outputs:Subtract_1_out.connect = </Root/MyMaterial/PulsatingGrid/Oneminus_1.outputs:out>
+            float2 ui:nodegraph:node:pos = (718.1288, 513.7197)
+            float2 ui:nodegraph:node:size = (136, 145)
+            int ui:nodegraph:node:stackingOrder = 646
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1199, 228)
             float2 ui:nodegraph:realitykit:subgraphOutputs:size = (169, 81)
-            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 398
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 539
 
             def Shader "Sin"
             {
                 uniform token info:id = "ND_sin_float"
                 float inputs:in.connect = </Root/MyMaterial/PulsatingGrid/Multiply.outputs:out>
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (240.5, 90.5)
+                float2 ui:nodegraph:node:pos = (419.5, 38.5)
                 float2 ui:nodegraph:node:size = (116, 40)
-                int ui:nodegraph:node:stackingOrder = 383
+                int ui:nodegraph:node:stackingOrder = 547
             }
 
             def Shader "Remap"
@@ -288,52 +103,53 @@ def Xform "Root"
                 float inputs:in.connect = </Root/MyMaterial/PulsatingGrid/Sin.outputs:out>
                 float inputs:inhigh
                 float inputs:inlow = -1
-                float inputs:outhigh
+                float inputs:outhigh.connect = </Root/MyMaterial/PulsatingGrid.inputs:Max>
                 float inputs:outlow = 0.3
+                float inputs:outlow.connect = </Root/MyMaterial/PulsatingGrid.inputs:Min>
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (405.5, 90.5)
+                float2 ui:nodegraph:node:pos = (637.5, 118.5)
                 float2 ui:nodegraph:node:size = (94, 181)
-                int ui:nodegraph:node:stackingOrder = 403
+                int ui:nodegraph:node:stackingOrder = 613
             }
 
             def Shader "Multiply_1"
             {
                 uniform token info:id = "ND_multiply_float"
-                float inputs:in1.connect = </Root/MyMaterial/PulsatingGrid/Subtract.outputs:out>
+                float inputs:in1.connect = </Root/MyMaterial/PulsatingGrid/Oneminus.outputs:out>
                 float inputs:in2.connect = </Root/MyMaterial/PulsatingGrid/Remap.outputs:out>
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (542.5, 123.5)
+                float2 ui:nodegraph:node:pos = (806.5, 228)
                 float2 ui:nodegraph:node:size = (60, 36)
-                int ui:nodegraph:node:stackingOrder = 401
+                int ui:nodegraph:node:stackingOrder = 612
             }
 
             def Shader "Time"
             {
                 uniform token info:id = "ND_time_float"
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (-48.753906, 89.734375)
+                float2 ui:nodegraph:node:pos = (61.25, 26.5)
                 float2 ui:nodegraph:node:size = (122.5, 53)
-                int ui:nodegraph:node:stackingOrder = 389
+                int ui:nodegraph:node:stackingOrder = 544
             }
 
-            def Shader "Subtract"
+            def Shader "Multiply"
             {
-                uniform token info:id = "ND_subtract_float"
-                float inputs:in1 = 1
-                float inputs:in1.connect = None
-                float inputs:in2.connect = </Root/MyMaterial/PulsatingGrid/Grid.outputs:Multiply_1_out>
+                uniform token info:id = "ND_multiply_float"
+                float inputs:in1.connect = </Root/MyMaterial/PulsatingGrid/Time.outputs:out>
+                float inputs:in2.connect = </Root/MyMaterial/PulsatingGrid.inputs:Speed>
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (397.70312, -66.78125)
-                float2 ui:nodegraph:node:size = (61.5, 36)
-                int ui:nodegraph:node:stackingOrder = 387
+                float2 ui:nodegraph:node:pos = (231.5, 38.5)
+                float2 ui:nodegraph:node:size = (60, 36)
+                int ui:nodegraph:node:stackingOrder = 546
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2", "inputs:in1"]
             }
 
             def NodeGraph "Grid"
             {
                 float outputs:Multiply_1_out.connect = </Root/MyMaterial/PulsatingGrid/Grid/Multiply_1.outputs:out>
-                float2 ui:nodegraph:node:pos = (240.82812, -80.640625)
+                float2 ui:nodegraph:node:pos = (419.5, 523)
                 float2 ui:nodegraph:node:size = (105.5, 81)
-                int ui:nodegraph:node:stackingOrder = 385
+                int ui:nodegraph:node:stackingOrder = 466
                 string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:Multiply_1_out"]
                 float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (924.21094, 111.578125)
                 float2 ui:nodegraph:realitykit:subgraphOutputs:size = (165.5, 81)
@@ -420,28 +236,144 @@ def Xform "Root"
                 }
             }
 
-            def Shader "Subtract_1"
+            def Shader "Oneminus"
             {
-                uniform token info:id = "ND_subtract_float"
-                float inputs:in1 = 1
-                float inputs:in1.connect = None
-                float inputs:in2.connect = </Root/MyMaterial/PulsatingGrid/Multiply_1.outputs:out>
+                uniform token info:id = "ND_realitykit_oneminus_float"
+                float inputs:in.connect = </Root/MyMaterial/PulsatingGrid/Grid.outputs:Multiply_1_out>
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (663.25, 123.5)
-                float2 ui:nodegraph:node:size = (61.5, 36)
-                int ui:nodegraph:node:stackingOrder = 400
+                float2 ui:nodegraph:node:pos = (637.5, 523)
+                float2 ui:nodegraph:node:size = (158, 109)
+                int ui:nodegraph:node:stackingOrder = 466
             }
 
-            def Shader "Multiply"
+            def Shader "Oneminus_1"
             {
-                uniform token info:id = "ND_multiply_float"
-                float inputs:in1.connect = </Root/MyMaterial/PulsatingGrid/Time.outputs:out>
-                float inputs:in2.connect = </Root/MyMaterial/PulsatingGrid.inputs:Speed>
+                uniform token info:id = "ND_realitykit_oneminus_float"
+                float inputs:in.connect = </Root/MyMaterial/PulsatingGrid/Multiply_1.outputs:out>
                 float outputs:out
-                float2 ui:nodegraph:node:pos = (98.984375, 104.21484)
-                float2 ui:nodegraph:node:size = (60, 36)
-                int ui:nodegraph:node:stackingOrder = 393
-                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2"]
+                float2 ui:nodegraph:node:pos = (975.5, 228)
+                float2 ui:nodegraph:node:size = (158, 109)
+                int ui:nodegraph:node:stackingOrder = 539
+            }
+        }
+
+        def Shader "Texcoord"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            int inputs:index
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-212.24245, 282.93195)
+            float2 ui:nodegraph:node:size = (180.5, 53)
+            int ui:nodegraph:node:stackingOrder = 640
+        }
+
+        def Shader "HSVToRGB"
+        {
+            uniform token info:id = "ND_hsvtorgb_color3"
+            color3f inputs:in.connect = </Root/MyMaterial/HSV.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (722.6307, 274.29822)
+            float2 ui:nodegraph:node:size = (155, 53)
+            int ui:nodegraph:node:stackingOrder = 651
+        }
+
+        def Shader "HSV"
+        {
+            uniform token info:id = "ND_combine3_color3"
+            float inputs:in1 = 0.1
+            float inputs:in1.connect = </Root/MyMaterial/Hue.outputs:out>
+            float inputs:in2 = 0.5
+            float inputs:in3 = 1
+            float inputs:in3.connect = </Root/MyMaterial/V.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (523.25, 286)
+            float2 ui:nodegraph:node:size = (131.5, 54)
+            int ui:nodegraph:node:stackingOrder = 604
+        }
+
+        def Shader "Multiply_1"
+        {
+            uniform token info:id = "ND_multiply_vector2"
+            float2 inputs:in1.connect = </Root/MyMaterial/Texcoord.outputs:out>
+            float2 inputs:in2 = (10, 5)
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (61.85277, 261.92758)
+            float2 ui:nodegraph:node:size = (60, 36)
+            int ui:nodegraph:node:stackingOrder = 598
+        }
+
+        def Shader "Hue"
+        {
+            uniform token info:id = "ND_noise2d_float"
+            float inputs:amplitude = 0.1
+            float inputs:pivot = 0.1
+            float2 inputs:texcoord.connect = </Root/MyMaterial/Multiply_1.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (312.9568, 222.43263)
+            float2 ui:nodegraph:node:size = (148.5, 145)
+            int ui:nodegraph:node:stackingOrder = 612
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:pivot", "inputs:amplitude", "inputs:amplitude", "inputs:texcoord"]
+        }
+
+        def Shader "V"
+        {
+            uniform token info:id = "ND_noise2d_float"
+            float inputs:amplitude = 0.2
+            float inputs:pivot = 0.8
+            float2 inputs:texcoord.connect = </Root/MyMaterial/Texcoord.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (314.75, 461)
+            float2 ui:nodegraph:node:size = (148.5, 145)
+            int ui:nodegraph:node:stackingOrder = 611
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:pivot", "inputs:amplitude", "inputs:amplitude", "inputs:texcoord"]
+        }
+
+        def Shader "UsdUVTexture"
+        {
+            uniform token info:id = "ND_UsdUVTexture"
+            asset inputs:file = @Numbers.png@
+            float2 inputs:st.connect = </Root/MyMaterial/Texcoord.outputs:out>
+            string inputs:wrapS
+            string inputs:wrapT
+            color4f outputs:rgba
+            float2 ui:nodegraph:node:pos = (309.99213, -72.3848)
+            float2 ui:nodegraph:node:size = (141.5, 217)
+            int ui:nodegraph:node:stackingOrder = 641
+        }
+
+        def Shader "Convert"
+        {
+            uniform token info:id = "ND_convert_color4_color3"
+            prepend color4f inputs:in.connect = </Root/MyMaterial/UsdUVTexture.outputs:rgba>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (632.8907, 15.830161)
+            float2 ui:nodegraph:node:size = (135.5, 40)
+            int ui:nodegraph:node:stackingOrder = 647
+        }
+    }
+
+    def Sphere "Sphere" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/MyMaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        float3 xformOp:scale = (10, 10, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:surface.connect = </Root/Sphere/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
             }
         }
     }

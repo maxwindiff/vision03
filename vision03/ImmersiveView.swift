@@ -29,7 +29,7 @@ struct ImmersiveView: View {
 
   let startDate = Date.now
 
-  @State var spherePosition: SIMD3<Float> = [0, 1.5, -1]
+  @State var spherePosition: SIMD3<Float> = [0, 1.2, -1.5]
   @State var sphereLookAt: SIMD3<Float> = [0, 0, -1]
   @State var sphereEntity: ModelEntity?
 

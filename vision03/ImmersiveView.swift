@@ -29,8 +29,8 @@ struct ImmersiveView: View {
 
   let startDate = Date.now
 
-  @State var spherePosition: SIMD3<Float> = [0, 1.2, -1.5]
-  @State var sphereLookAt: SIMD3<Float> = [0, 0, -1]
+  @State var spherePosition: SIMD3<Float> = [0, 1, -1.5]
+  @State var sphereLookAt: SIMD3<Float> = [-5, -20, 5]
   @State var sphereEntity: ModelEntity?
 
   var body: some View {
@@ -50,12 +50,12 @@ struct ImmersiveView: View {
           return;
         }
         
-        //      content.add(headAnchor)
-        //      if let panel = attachments.entity(for: "sphere-controller") {
-        //        panel.look(at: [0, 0, 0.5], from: [0, -0.25, -0.8],
-        //                   relativeTo: nil, forward: .positiveZ)
-        //        headAnchor.addChild(panel)
-        //      }
+//        content.add(headAnchor)
+//        if let panel = attachments.entity(for: "sphere-controller") {
+//          panel.look(at: [0, 0, 0.5], from: [0, -0.25, -0.8],
+//                     relativeTo: nil, forward: .positiveZ)
+//          headAnchor.addChild(panel)
+//        }
       } update: { content, attachments in
         // TODO: can't use @State from here?
         let elapsed = context.date.timeIntervalSince(startDate)
